@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import ReactMapGL, {Marker} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 import CityPin from './CityPin'
+import CityInfo from './CityInfo'
 export default class Map extends Component {
     constructor(props) {
         super(props)
@@ -13,19 +14,8 @@ export default class Map extends Component {
                 latitude: 53.5444,
                 longitude: -113.4989
             },
-            coords: [
-                {
-                    latitude: 53.5235,
-                    longitude: -113.6242
-                }, {
-                    latitude: 53.5225,
-                    longitude: -113.6342
-                }, {
-                    latitude: 53.5245,
-                    longitude: -113.7352
-                }
-            ],
-            data: null
+            data: null,
+            popupInfo: null
         }
     }
     componentDidMount() {
@@ -37,6 +27,21 @@ export default class Map extends Component {
                 this.setState({data: response})
             })
         }
+    }
+    renderPopup() {
+        const {popupInfo} = this.state;
+
+        return popupInfo && (
+            <Popup
+                tipSize={5}
+                anchor="top"
+                longitude={Number(popupInfo.location.longitude)}
+                latitude={Number(popupInfo.location.latitude)}
+                closeOnClick={false}
+                onClose={() => this.setState({popupInfo: null})}>
+                <CityInfo details={popupInfo}/>
+            </Popup>
+        );
     }
     render() {
         let {viewport, data} = this.state;
@@ -50,9 +55,11 @@ export default class Map extends Component {
                         <Marker
                             key={i}
                             latitude={Number(coord.location.latitude)}
-                            longitude={Number(coord.location.longitude)}><CityPin/></Marker>
+                            longitude={Number(coord.location.longitude)}><CityPin onClick={() => this.setState({popupInfo: coord})}/></Marker>
                     ))
                 }
+                {this.renderPopup()}
+
             </ReactMapGL>
 
         )

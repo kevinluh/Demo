@@ -3,7 +3,6 @@ import {Container} from 'reactstrap';
 import logo from './logo.svg';
 import NavBar from './components/NavBar'
 import Map from './components/Map'
-require('dotenv').config()
 
 class App extends Component {
     render() {
