@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Popup = styled.div `
     max-width:400px;
+    min-width:300px;
     font: 12px/20px 'Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif'
 `;
 

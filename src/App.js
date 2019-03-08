@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container} from 'reactstrap';
+import {Container, Row} from 'reactstrap';
 import logo from './logo.svg';
 import NavBar from './components/NavBar'
 import Map from './components/Map'
@@ -23,7 +23,9 @@ class App extends Component {
                     <NavBar trafficLength={trafficLength}/>
                 </header>
                 <Container>
-                    <Map trafficLength={this.handleTrafficLength}/>
+                    <Row>
+                        <Map trafficLength={this.handleTrafficLength}/>
+                    </Row>
                 </Container>
             </div>
         );

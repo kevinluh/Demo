@@ -8,9 +8,9 @@ export default class Map extends Component {
         this.state = {
             api_url: 'https://data.edmonton.ca/resource/87ck-293k.json',
             viewport: {
-                width: 1000,
-                height: 800,
-                zoom: 10,
+                width: "100vw",
+                height: "93vh",
+                zoom: 11,
                 latitude: 53.5444,
                 longitude: -113.4989
             },
