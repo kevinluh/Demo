@@ -1,18 +1,23 @@
 import React, {PureComponent} from 'react';
-import './CityInfo.css'
+import styled from 'styled-components';
+
+const Popup = styled.div `
+    max-width:400px;
+    font: 12px/20px 'Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif'
+`;
 
 export default class CityInfo extends PureComponent {
     render() {
         const {details} = this.props;
         return (
-            <div className="Popup">
+            <Popup>
                 <div >
                     <strong>{details.description}</strong><br/>
                     <em>{details.impact}</em><br/>
                     <em>{details.duration}</em><br/>
                     <p>{details.details}</p>
                 </div>
-            </div>
+            </Popup>
         );
     }
 }

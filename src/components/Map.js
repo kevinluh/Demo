@@ -25,12 +25,12 @@ export default class Map extends Component {
                 return response.clone().json()
             }).then(response => {
                 this.setState({data: response})
+                this.props.trafficLength(response.length)
             })
         }
     }
     renderPopup() {
         const {popupInfo} = this.state;
-
         return popupInfo && (
             <Popup
                 tipSize={5}

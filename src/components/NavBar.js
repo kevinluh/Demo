@@ -29,6 +29,7 @@ export default class NavBar extends React.Component {
         });
     }
     render() {
+        let {trafficLength} = this.props
         return (
             <div>
                 <Navbar color="light" light="light" expand="md">
@@ -37,7 +38,7 @@ export default class NavBar extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar="navbar">
                         <Nav className="ml-auto" navbar="navbar">
                             <NavItem>
-                                <NavLink href="/components/">Traffic Map</NavLink>
+                                {trafficLength && <NavLink href="/components/">Traffic Map - {trafficLength}</NavLink>}
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/components/">Components</NavLink>
